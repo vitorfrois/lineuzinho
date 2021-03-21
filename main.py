@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 import random
 from constant import docs, github, sheet, api
-
+import feijao
 
 from greeter import Greeter
 
@@ -67,6 +67,7 @@ def main():
     dp.add_handler(CommandHandler("docs", docsChannel))
     dp.add_handler(CommandHandler("contatinhos", contatinhos))
     dp.add_handler(CommandHandler("repo", repo))
+    dp.add_handler(CommandHandler("feijao", feijao.sabores))
     dp.add_handler(CommandHandler("help", help))
 
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, greeter.newMembersGreetings))
