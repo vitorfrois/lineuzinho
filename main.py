@@ -8,6 +8,19 @@ CONTATINHOS_SHEET_LINK = "https://docs.google.com/spreadsheets/d/1Kfy-tCDA_UggPU
 GITHUB_REPO_LINK = "https://github.com/lineuzinho-icmc/lineuzinho"
 SAVED_DOCS_LINK = "https://t.me/docs21"
 
+seed(1)
+#unicode de emojis
+red = "\U0001F534"
+yellow = "\U0001F7E1"
+green = "\U0001F7E2"
+blue = "\U0001F535"
+radioactive = "\U00002622" 
+black = "\U000026AB"
+white = "\U000026AA"
+purple = "\U0001F7E3"
+orange = "\U0001F7E0"
+brown = "\U0001F7E4"
+
 DOCS_CHANNEL_MESSAGES_MAX = 800
 
 def start(update, context):
@@ -44,6 +57,13 @@ def newMembersGreetings(update, context):
         welcomeVocative = newMembers[0].first_name.split(" ")[0].capitalize()
     
     update.message.reply_text("Boas vindas, {0} rsrs".format(welcomeVocative))
+    
+def feijao(update, context):
+	sabores = ["Picanha " + red, "Banana " + yellow, "Pimenta Preta " + black, "Podrão " + yellow, "Meleca " + green, "Algodão Doce" + purple, "Cereja " + red, "Minhoca " + brown, "Sujeira " + brown, "Cera " + yellow, "Grama " + green, "Azeitona " + green, "Limão " + green, "Ovo Podre " + yellow, "Salsicha " + red, "Sabonete " + blue, "Cerveja " + yellow, "Tutti-Fruti " + purple, "Vômito " + green, "Melancia " + red, "Césio-137 " + blue, "Coquinha gelada hmmm " + red, "Desodorante " + white, "farofa pronta yoki " + yellow, "kaiser " + yellow, "crocs " + blue]
+	length = len(sabores)
+	valorRandomico = randint(0, length)
+	s = sabores[valorRandomico]	
+	update.message.reply_text(s)
 
 def main():
     logger = logging.getLogger(__name__)
@@ -59,6 +79,7 @@ def main():
     dp.add_handler(CommandHandler("docs", docsChannel))
     dp.add_handler(CommandHandler("contatinhos", contatinhos))
     dp.add_handler(CommandHandler("repo", repo))
+    dp.add_handler(CommandHandler("feijao", feijao))
     dp.add_handler(CommandHandler("help", help))
 
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, newMembersGreetings))
